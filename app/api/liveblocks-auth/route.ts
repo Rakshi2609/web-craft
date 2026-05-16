@@ -7,9 +7,15 @@ import crypto from 'crypto'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { Liveblocks } = require('@liveblocks/node')
 
-const liveblocks = new Liveblocks({
-  secret: process.env.LIVEBLOCKS_SECRET_KEY as string,
-})
+let liveblocksInstance: any = null
+function getLiveblocks() {
+  if (!liveblocksInstance) {
+    liveblocksInstance = new Liveblocks({
+      secret: process.env.LIVEBLOCKS_SECRET_KEY as string,
+    })
+  }
+  return liveblocksInstance
+}
 
 function randomToken() {
   return crypto.randomBytes(16).toString('hex')
@@ -61,7 +67,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const session = liveblocks.prepareSession(username, {
+    const session = getLiveblocks().prepareSession(username, {
       userInfo: { name: username },
     })
     if (accessType === 'write') {
