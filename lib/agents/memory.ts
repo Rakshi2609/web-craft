@@ -6,7 +6,7 @@ export class MemoryAgent extends BaseAgent {
   async getContext(userId: string): Promise<AgentResponse<string>> {
     try {
       // Get the last 3 conversations for context
-      const history = await Conversation.find({ userId })
+      const history = await Conversation.find({ userId } as any)
         .sort({ createdAt: -1 })
         .limit(3)
 

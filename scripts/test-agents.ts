@@ -1,4 +1,4 @@
-import { MonitorAgent } from './lib/agents/monitor'
+import { MonitorAgent } from '../lib/agents/monitor'
 import dotenv from 'dotenv'
 dotenv.config({ path: '.env.local' })
 
