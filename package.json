@@ -4,10 +4,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node api.js && next dev",
+    "dev": "next dev",
     "clean": "rm -rf .next",
     "build": "npm run clean && next build",
-    "start": "node api.js && next start"
+    "start": "next start"
   },
   "keywords": [],
   "author": "",
